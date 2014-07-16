@@ -114,12 +114,12 @@ public class App {
     void refreshNearbyList() {
         LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
 
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         double lat = location == null ? 0 : location.getLatitude(), lon = location == null ? 0 : location.getLongitude();
         String key = "AIzaSyDK_xWSTc3aaESvutnPBN4oggfGCT-0eNM";
 
-        http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=500&key=" + key, new AsyncHttpResponseHandler() {
+        http.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=250&key=" + key, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 list = new ArrayList<String>();
